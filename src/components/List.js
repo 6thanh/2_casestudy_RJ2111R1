@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import axios from "axios";
 import React, { Component } from "react";
 import Content from "../layout/Content";

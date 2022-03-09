@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import List from './components/demoLayout';
-// import Paperbase from './layoutDemo/Paperbase';
+// import List from './components/demoLayout';
+import Paperbase from './layout/Paperbase';
 // import Content from './layoutDemo/Content';
 
 function App() {
@@ -11,8 +11,7 @@ function App() {
         <Routes>
           {/* <Route path='/' element={<Home />} /> */}
           {/* <Route path='/caseStudy_RJ2111R1_Ha' element={<Home />} /> */}
-          <Route path='/' element={<List />} />
-          {/* <Route path='/' element={<Paperbase />} /> */}
+          <Route path='/' element={<Paperbase />} />
           {/* <Route path='/products' element={<Products />} />
           <Route path='/products/edit/:productId' element={<Edit />} />
           <Route path='/products/delete/:productId' element={<Delete />} />
