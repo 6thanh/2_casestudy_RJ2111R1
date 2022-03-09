@@ -1,6 +1,8 @@
 import './App.css';
-import Content from './layoutDemo/Content';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import List from './components/demoLayout';
+// import Paperbase from './layoutDemo/Paperbase';
+// import Content from './layoutDemo/Content';
 
 function App() {
   return (
@@ -9,7 +11,8 @@ function App() {
         <Routes>
           {/* <Route path='/' element={<Home />} /> */}
           {/* <Route path='/caseStudy_RJ2111R1_Ha' element={<Home />} /> */}
-          <Route path='/' element={<Content />} />
+          <Route path='/' element={<List />} />
+          {/* <Route path='/' element={<Paperbase />} /> */}
           {/* <Route path='/products' element={<Products />} />
           <Route path='/products/edit/:productId' element={<Edit />} />
           <Route path='/products/delete/:productId' element={<Delete />} />
