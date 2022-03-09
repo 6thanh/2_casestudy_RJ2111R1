@@ -10,7 +10,7 @@ export default class List extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:3000/products')
+        axios.get('https://fakestoreapi.com/products')
             .then((res)=>{
                 this.setState({products: res.data}) 
             })
@@ -34,29 +34,29 @@ export default class List extends Component {
                         <thead className="table-bordered">
                             <tr className="text-white bg-secondary">
                                 <th className="text-center">Id</th>
-                                <th>Name</th>
-                                <th>Images</th>
+                                <th>Title</th>
                                 <th>Price</th>
                                 <th>Description</th>
                                 <th>Category</th>
+                                <th>Image</th>
                                 <th>Number</th>
                                 <th className="text-center">Action</th>
-                            </tr>
+                            </tr>                            
                         </thead>
                         <tbody>
                             {products.map((product) =>(
                                 <tr key={product.id}>
                                     <td className="text-center">{product.id}</td>
-                                    <td>{product.name}</td>
-                                    <td>
-                                        <div>
-                                            <img className="img-icon" src={require(`../imgs/${product.img}`)} title={product.name} alt={product.name} />
-                                        </div>
-                                    </td>
-                                    <td style={{color:"red"}}>{product.price}</td>
+                                    <td>{product.title}</td>
+                                    <td style={{color:"red"}}>{product.price} $</td>
                                     <td>{product.description}</td>
                                     <td>{product.category}</td>
-                                    <td>{product.number}</td>
+                                    <td>
+                                        <div>
+                                            <img className="img-icon" src={product.image} title={product.title} alt={product.title} />
+                                        </div>
+                                    </td>
+                                    <td>{product.rating.count}</td>
                                     <td className="text-center">
                                         <a href={`products/edit/${product.id}`}><button className="btn btn-primary m-2"><i className="fas fa-edit"></i></button></a>
                                         <a href={`products/delete/${product.id}`}><button className="btn btn-danger m-2"><i className="fas fa-trash-alt"></i></button></a>
