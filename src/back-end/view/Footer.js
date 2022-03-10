@@ -12,7 +12,7 @@ function Footer() {
                     <form action="">
                         <div className="row d-flex justify-content-center">
                         <div className="col-auto">
-                            <label for="form5Example29">
+                            <label htmlFor="form5Example29">
                                 <p className="pt-2">
                                 <strong>Sign up for our newsletter</strong>
                                 </p>

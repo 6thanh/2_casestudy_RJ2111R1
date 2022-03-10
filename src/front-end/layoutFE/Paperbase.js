@@ -5,8 +5,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Navigator from './Navigator';
 import Header from './Header';
-import Footer from './Footer';
-import List from '../components/List';
+import Footer from './Footer.js';
+import List from '../back-end/components/List';
 
 let theme = createTheme({
   palette: {
@@ -153,7 +153,7 @@ theme = {
 
 const drawerWidth = 256;
 
-export default function Paperbase() {
+function Paperbase() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
 
