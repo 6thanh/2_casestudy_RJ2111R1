@@ -3,10 +3,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import Navigator from './Navigator';
-import Header from './Header';
-import Footer from './Footer.js';
-import List from '../back-end/components/List';
+import Menu from '../layoutFE/Menu';
+import Header from '../layoutFE/Header';
+import Footer from '../layoutFE/Footer';
 
 let theme = createTheme({
   palette: {
@@ -153,7 +152,7 @@ theme = {
 
 const drawerWidth = 256;
 
-function Paperbase() {
+export default function Home({children}) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
 
@@ -170,7 +169,7 @@ function Paperbase() {
           sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         >
           {isSmUp ? null : (
-            <Navigator
+            <Menu
               PaperProps={{ style: { width: drawerWidth } }}
               variant="temporary"
               open={mobileOpen}
@@ -178,7 +177,7 @@ function Paperbase() {
             />
           )}
 
-          <Navigator
+          <Menu
             PaperProps={{ style: { width: drawerWidth } }}
             sx={{ display: { sm: 'block', xs: 'none' } }}
           />
@@ -186,7 +185,7 @@ function Paperbase() {
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
           <Header onDrawerToggle={handleDrawerToggle} />
           <Box component="main" sx={{ flex: 1, py: 6, px: 4, bgcolor: '#eaeff1' }}>
-            <List />
+            {children}
           </Box>
           <Box component="footer" sx={{ p: 2, bgcolor: '#eaeff1' }}>
             <Footer />

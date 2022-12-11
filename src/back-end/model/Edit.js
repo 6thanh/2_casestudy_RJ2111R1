@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 export function Edit() {
     const [product, setProduct] = useState([]);
     const {productId} = useParams();
+    const navigate = useNavigate();
 
     useEffect(()=>{
         if(productId) {
@@ -23,22 +24,18 @@ export function Edit() {
     }
 
     const updateImage = (e) =>{
-        // console.log(e.target.value)
         let newImage = e.target.files[0].name;
         setProduct({...product,
             [e.target.name]: newImage
         })
-        // product.img = newImage;
-        // console.log(product)
     }
 
-    const navigate = useNavigate();
     const handleSubmit = () => {
         if (productId) {
             axios.put(`http://localhost:3000/products/${productId}`, product)
             .then((res)=>{
                 alert('Success!!!');
-                navigate('/')            
+                navigate('/products')            
             })
             .catch((err)=>{throw err})
         }
@@ -60,11 +57,17 @@ export function Edit() {
             </div>
             <div>
             <label htmlFor="description" className="w-25 mt-2 text-start">Description</label>
-                <input type="text" className="w-75" id="description" name="description" value={product.description || ''} onChange={handleChange} required />
+                <textarea className="mt-2 w-75" id="description" name="description" value={product.description || ''} onChange={handleChange} required />
             </div>
             <div>
-            <label htmlFor="category" className="w-25 mt-2 text-start">Category</label>
-                <input type="text" className="w-75" id="category" name="category" value={product.category || ''} onChange={handleChange} required />
+                <label htmlFor="category" className="w-25 mt-2 text-start">Category</label>
+                <select id="category" name="category" className="w-75" onChange={handleChange}>
+                    <option defaultValue>--Choose Category--</option>
+                    <option value="men's clothing">Men's clothing</option>
+                    <option value="women's clothing">Women's clothing</option>
+                    <option value="jewelery">Jewelery</option>
+                    <option value="electronics">Electronics</option>
+                </select>
             </div>
             <div>
             <label htmlFor="image" className="w-25 mt-2 text-start">Img</label>
@@ -75,7 +78,7 @@ export function Edit() {
                 <input type="number" className="w-75" id="number" name="number" value={product.number || ''} onChange={handleChange} required />
             </div>
             <div>
-                <a className="btn btn-success m-2" rules="button" href="/" >Product List</a>
+                <a className="btn btn-success m-2" rules="button" href="/products" >Product List</a>
                 <button className="btn btn-primary m-2" onClick={handleSubmit}>Save</button>
             </div>
         </div>

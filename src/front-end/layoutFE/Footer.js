@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import 'bootstrap/dist/css/bootstrap.css';
 
-function Footer() {
+export default function Footer() {
   return (
         <div className="footer">
             <footer className="text-center text-white" style={{backgroundColor: "#101F33"}}>
@@ -45,5 +45,3 @@ function Footer() {
         
   );
 }
-
-export default Footer;

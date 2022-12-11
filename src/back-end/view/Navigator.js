@@ -21,11 +21,11 @@ import StoreIcon from '@mui/icons-material/Store';
 import ShopIcon from '@mui/icons-material/Shop';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
 import LogoutIcon from '@mui/icons-material/Logout';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
-import BoyIcon from '@mui/icons-material/Boy';
-import GirlIcon from '@mui/icons-material/Girl';
-import DiamondIcon from '@mui/icons-material/Diamond';
-import ElectricalServicesIcon from '@mui/icons-material/ElectricalServices';
+// import AttachFileIcon from '@mui/icons-material/AttachFile';
+// import BoyIcon from '@mui/icons-material/Boy';
+// import GirlIcon from '@mui/icons-material/Girl';
+// import DiamondIcon from '@mui/icons-material/Diamond';
+// import ElectricalServicesIcon from '@mui/icons-material/ElectricalServices';
 // import { useNavigate } from 'react-router-dom';
 
 let categories = [
@@ -35,42 +35,19 @@ let categories = [
       {
         id: 'Home',
         icon: <HomeIcon />,
+        href: '/'
       },
-      {id: 'Logout', icon: <LogoutIcon /> },
+      {id: 'Logout', icon: <LogoutIcon />, href: '/login' },
       { id: 'Shop', icon: <ShopIcon /> },
       { 
         id: 'Storage', 
         icon: <StoreIcon />,
+        href: '/product',
         active: true,
       },
-      { id: 'Contact', icon: <ContactPageIcon /> },
+      { id: 'Contact', icon: <ContactPageIcon />, href: '/contact'},
     ],
-  },
-  // {
-  //   id: 'All products',
-  //   children: [
-  //     { 
-  //       id: "Men's clothing", 
-  //       icon: <BoyIcon />,
-  //       active: false,
-  //     },
-  //     { 
-  //       id: "Women's clothing", 
-  //       icon: <GirlIcon />,
-  //       active: false,
-  //     },
-  //     { 
-  //       id: 'Jewelery', 
-  //       icon: <DiamondIcon />,
-  //       active: false,
-  //     },
-  //     { 
-  //       id: 'Electronics', 
-  //       icon: <ElectricalServicesIcon />,
-  //       active: false,
-  //     },
-  //   ],
-  // },
+  }
 ];
 
 const item = {
@@ -125,13 +102,15 @@ export default function Navigator(props) {
             <ListItem sx={{ py: 2, px: 3 }}>
               <ListItemText sx={{ color: '#fff' }}>{id}</ListItemText>
             </ListItem>
-            {children.map(({ id: childId, icon, active }) => (
+            {children.map(({ id: childId, icon, active, href }) => (
               <ListItem disablePadding key={childId}>
                 {/* <ListItemButton selected={active} sx={item} onClick={({childId, active}) =>{handleChoose({childId, active})}}> */}
-                <ListItemButton selected={active} sx={item} >
-                  <ListItemIcon>{icon}</ListItemIcon>
-                  <ListItemText>{childId}</ListItemText>
-                </ListItemButton>
+                  <a href={href} style={{textDecoration: "none", width: "100%"}}>
+                    <ListItemButton selected={active} sx={item} >
+                      <ListItemIcon>{icon}</ListItemIcon>
+                      <ListItemText>{childId}</ListItemText>
+                    </ListItemButton>
+                  </a>
               </ListItem>
             ))}
             <Divider sx={{ mt: 2 }} />

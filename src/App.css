@@ -45,3 +45,20 @@ tr:nth-child(even) {
   width: 4rem;
   height: 5rem;
 }
+.card-display {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  top: 10rem;
+  right: 5rem;
+}
+
+.text-slogan {
+  position: absolute;
+  top: 15rem;
+  left: 22rem;
+  color: rgb(6,145,0)
+}

@@ -10,7 +10,7 @@ export function Delete() {
         if(productId) {
             axios.get(`http://localhost:3000/products/${productId}`)
             .then((res)=>{
-                console.log(res.data);
+                // console.log(res.data);
                 setProduct(res.data)
             })
             .catch((err)=>{throw err})
@@ -21,12 +21,14 @@ export function Delete() {
 
     const handleSubmit = () => {
         if (productId) {
-            axios.delete(`http://localhost:3000/products/${productId}`, product)
-            .then((res)=>{                
-                alert('Delete success!!!')
-                navigate('/products')            
-            })
-            .catch((err)=>{throw err})
+            if(window.confirm("Are you sure !")) {
+                axios.delete(`http://localhost:3000/products/${productId}`, product)
+                .then((res)=>{
+                    alert('Delete success!!!')
+                    navigate('/products')            
+                })
+                .catch((err)=>{throw err})    
+            }
         }
     }
 
@@ -38,8 +40,8 @@ export function Delete() {
             <input type="number" className="w-75" id="productId" name="id" value={product.id || ''} readOnly />
         </div>
         <div>
-        <label htmlFor="name" className="w-25 mt-2 text-start">Name</label>
-            <input type="text" className="w-75" id="name" name="name" value={product.name || ''} readOnly />
+        <label htmlFor="title" className="w-25 mt-2 text-start">Title</label>
+            <input type="text" className="w-75" id="title" name="title" value={product.title || ''} readOnly />
         </div>
         <div>
         <label htmlFor="price" className="w-25 mt-2 text-start">Price</label>
@@ -59,10 +61,11 @@ export function Delete() {
         </div>
         <div>
             <a className="btn btn-success m-2" rules="button" href="/products" >Product List</a>
-            {/* <button className="btn btn-primary m-2" onClick={handleSubmit}>Save</button> */}
             <button className="btn btn-danger m-3" onClick={handleSubmit}>Delete</button>
-
         </div>
+        {/* <div className="img-icon">
+            <img src={require(`../../../public/imgs/${product.image}`)}  alt={product.title} />
+        </div> */}
         </div>
     )
 }

@@ -4,9 +4,8 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Navigator from '../view/Navigator';
-import Header from '../view/Header';
-import Footer from '../view/Footer.js';
 import List from '../model/List';
+import Author from '../view/Author';
 
 let theme = createTheme({
   palette: {
@@ -184,12 +183,12 @@ export default function Paperbase() {
           />
         </Box>
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-          <Header onDrawerToggle={handleDrawerToggle} />
+          {/* <Header onDrawerToggle={handleDrawerToggle} /> */}
           <Box component="main" sx={{ flex: 1, py: 6, px: 4, bgcolor: '#eaeff1' }}>
             <List />
           </Box>
           <Box component="footer" sx={{ p: 2, bgcolor: '#eaeff1' }}>
-            <Footer />
+            <Author />
           </Box>
         </Box>
       </Box>

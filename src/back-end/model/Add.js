@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function Add() {
-    const [product, setProduct] = useState([]);    
+    const [product, setProduct] = useState([]); 
+    const navigate= useNavigate();   
 
     const handleChange = (e) =>{
         setProduct({...product,
@@ -11,7 +12,13 @@ export function Add() {
         })
     }
 
-    const navigate= useNavigate();
+    const updateImage = (e) =>{
+        let newImage = e.target.files[0].name;
+        setProduct({...product,
+            [e.target.name]: newImage
+        })
+    }
+
     const handleSubmit = () => {
         if(product.id === null || product.id === undefined){
             alert("Please input a product!");
@@ -33,12 +40,8 @@ export function Add() {
                 <input type="number" className="w-75" id="productId" name="id" value={product.id || ''} onChange={handleChange} required />
             </div>
             <div>
-            <label htmlFor="name" className="w-25 mt-2 text-start">Name</label>
-                <input type="text" className="w-75" id="name" name="name" value={product.name || ''} onChange={handleChange} required />
-            </div>
-            <div>
-            <label htmlFor="image" className="w-25 mt-2 text-start">Image</label>
-                <input type="file" className="w-75" id="image" accept=".jpg, .png" multiple name="img" value={product.img || ''} onChange={handleChange} required />
+            <label htmlFor="title" className="w-25 mt-2 text-start">Title</label>
+                <input type="text" className="w-75" id="title" name="title" value={product.title || ''} onChange={handleChange} required />
             </div>
             <div>
             <label htmlFor="price" className="w-25 mt-2 text-start">Price</label>
@@ -46,11 +49,21 @@ export function Add() {
             </div>
             <div>
             <label htmlFor="description" className="w-25 mt-2 text-start">Description</label>
-                <input type="text" className="w-75" id="description" name="description" value={product.description || ''} onChange={handleChange} required />
+                <textarea className="mt-2 w-75" id="description" name="description" value={product.description || ''} onChange={handleChange} required />
             </div>
             <div>
-            <label htmlFor="category" className="w-25 mt-2 text-start">Category</label>
-                <input type="text" className="w-75" id="category" name="category" value={product.category || ''} onChange={handleChange} required />
+                <label htmlFor="category" className="w-25 mt-2 text-start">Category</label>
+                <select id="category" name="category" className="w-75" onChange={handleChange}>
+                    <option defaultValue>--Choose Category--</option>
+                    <option value="men's clothing">Men's clothing</option>
+                    <option value="women's clothing">Women's clothing</option>
+                    <option value="jewelery">Jewelery</option>
+                    <option value="electronics">Electronics</option>
+                </select>
+            </div>
+            <div>
+            <label htmlFor="image" className="w-25 mt-2 text-start">Img</label>
+                <input type="file" className="w-75" id="image" name="image" value='' onChange={(e)=>updateImage(e)} required />
             </div>
             <div>
                 <label htmlFor="number" className="w-25 mt-2 text-start">Number</label>
